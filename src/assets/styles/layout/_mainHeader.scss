@@ -1,0 +1,42 @@
+.mainHeader {
+  height: 72.35px;
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color__primary);
+
+  .dashboard__main__left {
+    h3 {
+      letter-spacing: 0.125rem;
+    }
+  }
+
+  .dashboard__main__right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    div {
+      width: 42px;
+      height: 42px;
+      border-radius: 100%;
+      border: 1px solid var(--color__primary);
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    select {
+      padding: 8px;
+      cursor: pointer;
+
+      option {
+        cursor: pointer;
+      }
+    }
+  }
+}

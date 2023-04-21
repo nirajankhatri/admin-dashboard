@@ -1,0 +1,17 @@
+.CTAButton {
+  display: inline-block;
+  width: 5em;
+  background-color: var(--color__background__primary);
+  color: var(--color__primary);
+  border-radius: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  padding: 0.25em 1em;
+  cursor: pointer;
+  
+  &:hover {
+    filter: saturate(150%);
+    font-weight: 600;
+  }
+}
