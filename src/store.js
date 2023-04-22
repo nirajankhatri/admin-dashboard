@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import loginReducer from "./features/login/redux/loginSlice";
-import usersReducer from "./features/user/redux/usersSlice";
-import productsReducer from "./features/product/redux/productsSlice";
-import userReducer from "./features/user/redux/userSlice";
-import productReducer from "./features/product/redux/productSlice";
+import usersReducer from "./features/dashboard/components/users/redux/usersSlice";
+import productsReducer from "./features/dashboard/components/products/redux/productsSlice";
+import userReducer from "./features/dashboard/components/users/redux/userSlice";
+import productReducer from "./features/dashboard/components/products/redux/productSlice";
 
 
 const store = configureStore({

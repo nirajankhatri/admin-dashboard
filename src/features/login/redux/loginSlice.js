@@ -1,20 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+import { login } from "./thunk";
+import { logout } from "./thunk";
 
-export const login = createAsyncThunk(
-  "user/login",
-  async ({ username, password }) => {
-    const { data } = await axios.post("https://dummyjson.com/auth/login", {
-      username,
-      password,
-    });
-    localStorage.setItem("userInfo", JSON.stringify(data));
-    return data;
-  }
-);
+
 
 const loginSlice = createSlice({
-  name: "user",
+  name: "login",
   initialState: { loading: false, userInfo: null, error: false },
   reducers: {},
   extraReducers: (builder) => {
@@ -32,6 +23,18 @@ const loginSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
         state.userInfo = null;
+        state.error = action.error.message;
+      })
+      .addCase(logout.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logout.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userInfo = null;
+        state.error = false;
+      })
+      .addCase(logout.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       });
   },

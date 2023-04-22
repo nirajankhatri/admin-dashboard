@@ -1,18 +1,27 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
 import "./App.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 
-import { fetchProduct, fetchProducts } from "./features/product/redux/thunks";
-import { fetchUser, fetchUsers } from "./features/user/redux/thunks";
+import {
+  fetchProduct,
+  fetchProducts,
+} from "./features/dashboard/components/products/redux/thunks";
+import {
+  fetchUser,
+  fetchUsers,
+} from "./features/dashboard/components/users/redux/thunks";
 
 import ProtectedRoute from "./HOC/ProtectedRoute";
-import LoginPage from "./pages/login";
 import Dashboard from "./features/dashboard";
 
 import { userContext } from "./context/userContext";
+import LoginForm from "./features/login";
+import UserList from "./features/dashboard/components/users";
+import Reports from "./features/dashboard/components/reports";
+import ProductList from "./features/dashboard/components/products";
 
 function App() {
   let { userInfo } = useSelector((state) => state.login);
@@ -35,9 +44,13 @@ function App() {
       <div className="App">
         <Routes>
           <Route element={<ProtectedRoute user={userInfo} />}>
-            <Route path="/" element={<Dashboard />} user={userInfo} />
+            <Route path="/" element={<Dashboard />} user={userInfo}>
+              <Route path="users" element={<UserList />} />
+              <Route path="products" element={<ProductList />} />
+              <Route path="reports" element={<Reports />} />
+            </Route>
           </Route>
-          <Route path="login" element={<LoginPage />} />
+          <Route path="login" element={<LoginForm />} />
         </Routes>
       </div>
     </userContext.Provider>

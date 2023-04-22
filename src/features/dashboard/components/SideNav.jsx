@@ -18,13 +18,13 @@ const SideNav = () => {
         <div className="sidenav__links__top">
           <ul>
             <li>
-              <NavLink>
+              <NavLink to="/">
                 <FontAwesomeIcon icon={faHouse} style={{ color: "#0b2447" }} />
                 <span>Dashboard</span>
               </NavLink>
             </li>
             <li>
-              <NavLink>
+              <NavLink to="users">
                 <FontAwesomeIcon
                   icon={faUserAlt}
                   style={{ color: "#0b2447" }}
@@ -33,7 +33,7 @@ const SideNav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink>
+              <NavLink to="products">
                 <FontAwesomeIcon
                   icon={faBoxesStacked}
                   style={{ color: "#0b2447" }}
@@ -42,7 +42,7 @@ const SideNav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink>
+              <NavLink to="reports">
                 <FontAwesomeIcon
                   icon={faFileAlt}
                   style={{ color: "#0b2447" }}

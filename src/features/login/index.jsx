@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import CTAButton from "../../components/CTAButton";
 import Spinner from "../../components/Spinner";
-import { login } from "./redux/loginSlice";
+import { login } from "./redux/thunk";
 
 const LoginForm = () => {
   const [formValues, setFormValues] = useState({
