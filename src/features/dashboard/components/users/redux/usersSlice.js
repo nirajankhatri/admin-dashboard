@@ -8,7 +8,12 @@ const usersSlice = createSlice({
     users: [],
     error: false,
   },
-  reducers: {},
+  reducers: {
+    deleteUser: (state, action) => {
+      console.log("Action", action.payload.id);
+      state.users = state.users.filter((item) => item.id != action.payload.id);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
@@ -29,4 +34,5 @@ const usersSlice = createSlice({
   },
 });
 
+export const { deleteUser } = usersSlice.actions;
 export default usersSlice.reducer;

@@ -1,0 +1,42 @@
+.userList-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 88%;
+  overflow: scroll;
+
+  .userList-col {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-weight: 500;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .userList-col-btns {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+
+    .btn {
+      padding: 4px;
+    }
+  }
+  .userList-col.userList-col-th {
+    background-color: var(--color__brand);
+    border: none;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .userList-col.userList-col-th + .userList-col.userList-col-th {
+    border-left: 1px solid #ccc;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .userList-grid {
+    font-size: 0.75rem;
+    overflow: scroll;
+  }
+}

@@ -22,9 +22,13 @@ import LoginForm from "./features/login";
 import UserList from "./features/dashboard/components/users";
 import Reports from "./features/dashboard/components/reports";
 import ProductList from "./features/dashboard/components/products";
+import UserEditForm from "./features/dashboard/components/users/components/UserEditForm";
 
 function App() {
   let { userInfo } = useSelector((state) => state.login);
+
+  const { users } = useSelector((state) => state.users);
+  const { products } = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
 
@@ -33,10 +37,11 @@ function App() {
   }
 
   useEffect(() => {
-    dispatch(fetchUsers());
-    dispatch(fetchProducts());
-    dispatch(fetchUser(0));
-    dispatch(fetchProduct(0));
+    if (userInfo) {
+      dispatch(fetchUsers());
+      dispatch(fetchProducts());
+      dispatch(fetchProduct(0));
+    }
   }, []);
 
   return (
@@ -45,8 +50,12 @@ function App() {
         <Routes>
           <Route element={<ProtectedRoute user={userInfo} />}>
             <Route path="/" element={<Dashboard />} user={userInfo}>
-              <Route path="users" element={<UserList />} />
-              <Route path="products" element={<ProductList />} />
+              <Route path="user/edit/:id" element={<UserEditForm />} />
+              <Route path="users" element={<UserList users={users} />} />
+              <Route
+                path="products"
+                element={<ProductList products={products} />}
+              />
               <Route path="reports" element={<Reports />} />
             </Route>
           </Route>

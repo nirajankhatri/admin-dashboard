@@ -1,0 +1,41 @@
+.editUserFormContainer {
+  position: relative;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: fit-content;
+    height: 300px;
+    align-items: end;
+    gap: 3em;
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+      }
+
+      input {
+        width: 300px;
+        padding: 0.5em;
+      }
+    }
+
+    .formBtns {
+      flex-direction: row;
+      column-gap: 3em;
+
+      button {
+        width: 100px;
+        padding: 8px;
+      }
+    }
+  }
+}
