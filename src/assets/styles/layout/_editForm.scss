@@ -22,7 +22,8 @@
         margin-bottom: 8px;
       }
 
-      input {
+      input,
+      select {
         width: 300px;
         padding: 0.5em;
       }
@@ -35,6 +36,16 @@
       button {
         width: 100px;
         padding: 8px;
+        cursor: pointer;
+      }
+      button + button {
+        background-color: var(--color__background__primary);
+        border: 1px solid black;
+        border-radius: 5px;
+
+        &:hover {
+          filter: saturate(200%);
+        }
       }
     }
   }

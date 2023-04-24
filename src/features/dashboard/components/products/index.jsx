@@ -1,16 +1,22 @@
 import { faPenToSquare, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { deleteProduct } from "./redux/productsSlice";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductList = ({ products }) => {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const deleteProductHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      console.log("deluser");
       dispatch(deleteProduct({ id }));
+      toast("Product Deleted!!!");
     }
   };
 
@@ -35,7 +41,7 @@ const ProductList = ({ products }) => {
           <div className="userList-col userList-col-btns">
             <button
               className="btn"
-              onClick={() => navigate(`/todo/edit/${product?.id}`)}
+              onClick={() => navigate(`/product/edit/${product?.id}`)}
             >
               <FontAwesomeIcon icon={faPenToSquare} size="xl" />
             </button>
@@ -53,6 +59,7 @@ const ProductList = ({ products }) => {
           </div>
         </React.Fragment>
       ))}
+      <ToastContainer />
     </div>
   );
 };

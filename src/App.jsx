@@ -23,6 +23,8 @@ import UserList from "./features/dashboard/components/users";
 import Reports from "./features/dashboard/components/reports";
 import ProductList from "./features/dashboard/components/products";
 import UserEditForm from "./features/dashboard/components/users/components/UserEditForm";
+import ProductEditForm from "./features/dashboard/components/products/components/ProductEditForm";
+import Charts from "./features/dashboard/components/charts";
 
 function App() {
   let { userInfo } = useSelector((state) => state.login);
@@ -40,7 +42,6 @@ function App() {
     if (userInfo) {
       dispatch(fetchUsers());
       dispatch(fetchProducts());
-      dispatch(fetchProduct(0));
     }
   }, []);
 
@@ -50,8 +51,10 @@ function App() {
         <Routes>
           <Route element={<ProtectedRoute user={userInfo} />}>
             <Route path="/" element={<Dashboard />} user={userInfo}>
+              <Route path="/" element={<Charts products={products} />} />
               <Route path="user/edit/:id" element={<UserEditForm />} />
               <Route path="users" element={<UserList users={users} />} />
+              <Route path="product/edit/:id" element={<ProductEditForm />} />
               <Route
                 path="products"
                 element={<ProductList products={products} />}

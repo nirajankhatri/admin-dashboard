@@ -5,11 +5,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--color__primary);
+  background-color: var(--color__brand);
 
   .dashboard__main__left {
     h3 {
       letter-spacing: 0.125rem;
+      color: white;
     }
   }
 

@@ -1,8 +1,6 @@
 .userList-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  height: 88%;
-  overflow: scroll;
 
   .userList-col {
     border: 1px solid #ccc;
@@ -15,11 +13,13 @@
 
   .userList-col-btns {
     display: flex;
-    justify-content: space-around;
-    text-align: center;
+    align-items: center;
+    gap: 3em;
 
     .btn {
       padding: 4px;
+      width: 32px;
+      height: 32px;
     }
   }
   .userList-col.userList-col-th {

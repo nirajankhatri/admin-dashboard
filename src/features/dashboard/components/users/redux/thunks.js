@@ -3,14 +3,14 @@ import axios from "axios";
 
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   const { data } = await axios.get(
-    "https://admin-dashboard-993e9-default-rtdb.asia-southeast1.firebasedatabase.app/users.json"
+    "https://dummyjson.com/users"
   );
-  return data;
+  return data.users;
 });
 
 export const fetchUser = createAsyncThunk("user/fetchUser", async (id) => {
   const { data } = await axios.get(
-    `https://admin-dashboard-993e9-default-rtdb.asia-southeast1.firebasedatabase.app/users/${id}.json`
+    `https://dummyjson.com/users/${id}`
   );
   return data;
 });

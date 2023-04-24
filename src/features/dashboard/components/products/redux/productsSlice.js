@@ -15,6 +15,16 @@ const productsSlice = createSlice({
         (item) => item.id != action.payload.id
       );
     },
+    editProduct: (state, action) => {
+      state.products.forEach((product) => {
+        if (product.id == action.payload.id) {
+          product.category = action.payload.category;
+          product.brand = action.payload.brand;
+          product.price = action.payload.price;
+          product.stock = action.payload.stock;
+        }
+      });
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -36,5 +46,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { deleteProduct } = productsSlice.actions;
+export const { deleteProduct, editProduct } = productsSlice.actions;
 export default productsSlice.reducer;

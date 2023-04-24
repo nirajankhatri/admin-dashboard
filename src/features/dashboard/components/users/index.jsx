@@ -5,20 +5,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteUser } from "./redux/usersSlice";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const UserList = ({ users }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const deleteUserHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
-      console.log("deluser");
       dispatch(deleteUser({ id }));
+      toast("User Deleted!!!");
     }
   };
 
   return (
     <div className="userList-grid">
-      <div className="userList-col userList-col-th">id</div>
+      <div className="userList-col userList-col-th">Id</div>
       <div className="userList-col userList-col-th">firstName</div>
       <div className="userList-col userList-col-th">lastName</div>
       <div className="userList-col userList-col-th">age</div>
@@ -52,6 +55,7 @@ const UserList = ({ users }) => {
           </div>
         </React.Fragment>
       ))}
+      <ToastContainer />
     </div>
   );
 };

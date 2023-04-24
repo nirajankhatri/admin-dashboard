@@ -10,8 +10,18 @@ const usersSlice = createSlice({
   },
   reducers: {
     deleteUser: (state, action) => {
-      console.log("Action", action.payload.id);
+      console.log("del Action", action.payload.id);
       state.users = state.users.filter((item) => item.id != action.payload.id);
+    },
+    editUser: (state, action) => {
+      state.users.forEach((user) => {
+        if (user.id == action.payload.id) {
+          user.firstName = action.payload.firstName;
+          user.lastName = action.payload.lastName;
+          user.gender = action.payload.gender;
+          user.age = action.payload.age;
+        }
+      });
     },
   },
   extraReducers: (builder) => {
@@ -34,5 +44,5 @@ const usersSlice = createSlice({
   },
 });
 
-export const { deleteUser } = usersSlice.actions;
+export const { deleteUser, editUser } = usersSlice.actions;
 export default usersSlice.reducer;

@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../redux/thunks";
-import { editUser } from "../redux/usersSlice";
-import { clearUser } from "../redux/userSlice";
+import { fetchProduct } from "../redux/thunks";
+import { clearProduct } from "../redux/productSlice";
+import { editProduct } from "../redux/productsSlice";
 
-const UserEditForm = () => {
+const ProductEditForm = () => {
   const { id } = useParams();
   const [formValues, setFormValues] = useState({
     id: "",
-    firstName: "",
-    lastName: "",
-    gender: "",
-    age: "",
+    category: "",
+    brand: "",
+    price: "",
+    stock: "",
   });
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const { loading, user, error } = useSelector((state) => state.user);
+  const { loading, product, error } = useSelector((state) => state.product);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -27,84 +27,74 @@ const UserEditForm = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(editUser(formValues));
-    dispatch(clearUser());
-    navigate("/users");
+    dispatch(editProduct(formValues));
+    dispatch(clearProduct());
+    navigate("/products");
   };
 
   const onCancelHandler = () => {
-    dispatch(clearUser());
-    navigate("/users");
+    dispatch(clearProduct());
+    navigate("/products");
   };
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchUser(id));
+      dispatch(fetchProduct(id));
     }
   }, [id]);
 
   useEffect(() => {
-    if (user && Object.keys(user).length !== 0) {
-      setFormValues(user);
+    if (product && Object.keys(product).length !== 0) {
+      setFormValues(product);
     }
-  }, [user]);
+  }, [product]);
 
   return (
     <div className="editUserFormContainer">
       {loading ? null : error ? null : formValues ? (
         <form onSubmit={onSubmitHandler} className="editUserForm">
           <div>
-            <label>Id</label>
+            <label>Title</label>
             <input
               type="text"
-              name="id"
-              value={formValues.id}
-              onChange={onChangeHandler}
-              disabled
-            />
-          </div>
-          <div>
-            <label>Firstname</label>
-            <input
-              type="text"
-              name="firstName"
-              value={formValues.firstName}
+              name="title"
+              value={formValues.title}
               onChange={onChangeHandler}
             />
           </div>
           <div>
-            <label>LastName</label>
+            <label>Category</label>
             <input
               type="text"
-              name="lastName"
-              value={formValues.lastName}
+              name="category"
+              value={formValues.category}
               onChange={onChangeHandler}
             />
           </div>
           <div>
-            <label>Gender</label>
-            <select
-              name="gender"
-              value={formValues.gender}
-              onChange={onChangeHandler}
-            >
-              <option value={formValues.gender}>
-                {formValues.gender.toUpperCase()}
-              </option>
-              <option value={formValues.gender == "male" ? "female" : "male"}>
-                {(formValues.gender == "male"
-                  ? "female"
-                  : "male"
-                ).toUpperCase()}
-              </option>
-            </select>
-          </div>
-          <div>
-            <label>Age</label>
+            <label>Brand</label>
             <input
               type="text"
-              name="age"
-              value={formValues.age}
+              name="brand"
+              value={formValues.brand}
+              onChange={onChangeHandler}
+            />
+          </div>
+          <div>
+            <label>Price</label>
+            <input
+              type="text"
+              name="price"
+              value={formValues.price}
+              onChange={onChangeHandler}
+            />
+          </div>
+          <div>
+            <label>Stock</label>
+            <input
+              type="text"
+              name="stock"
+              value={formValues.stock}
               onChange={onChangeHandler}
             />
           </div>
@@ -118,4 +108,4 @@ const UserEditForm = () => {
   );
 };
 
-export default UserEditForm;
+export default ProductEditForm;

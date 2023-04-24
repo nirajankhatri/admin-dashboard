@@ -16,7 +16,9 @@ const Dashboard = ({ user }) => {
       <SideNav />
       <main>
         <MainHeader />
-        {<Outlet /> ? <Outlet /> : <h2>Charts</h2>}
+        <section>
+          <Outlet />
+        </section>
       </main>
     </div>
   );
