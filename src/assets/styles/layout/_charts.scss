@@ -1,9 +1,62 @@
 .chartsContainer {
-  display: inline-block;
   width: 100%;
 
-  .chartWrapper {
-    width: 50%;
+  .barChartWrapper {
+    width: 100%;
     height: 250px;
+  }
+
+  .pieChartWrapper {
+    width: 100%;
+    height: 250px;
+    display: flex;
+
+    div {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+
+      .GenderPieChartIndex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+
+        div {
+          width: max-content;
+          display: inline-block;
+          height: fit-content;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+
+      .CategoryStockPieChartIndex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+
+        div {
+          width: max-content;
+          height: fit-content;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          span {
+            display: inline-block;
+            height: 12px !important;
+            width: 12px !important;
+          }
+        }
+      }
+    }
+
+    div {
+      width: 45%;
+    }
   }
 }

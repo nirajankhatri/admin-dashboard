@@ -19,7 +19,7 @@
     align-items: center;
     gap: 1rem;
 
-    div {
+    .imageContainer {
       width: 42px;
       height: 42px;
       border-radius: 100%;
@@ -28,6 +28,50 @@
 
       img {
         max-width: 100%;
+      }
+    }
+
+    .dropDownContainer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 100%;
+      cursor: pointer;
+      .imageContainer {
+        width: 42px;
+        height: 42px;
+        border-radius: 100%;
+        border: 1px solid var(--color__primary);
+        overflow: hidden;
+
+        img {
+          max-width: 100%;
+        }
+      }
+      .dropDownList {
+        position: absolute;
+        z-index: 999;
+        background-color: rgb(255, 255, 255);
+        width: 100px;
+        border-radius: 5px;
+        overflow: hidden;
+        top: 80px;
+        box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.4);
+
+        div {
+          padding: 8px;
+          font-size: 0.85rem;
+          box-shadow: 0px 10px 15px -3px rgba(160, 160, 160, 0.1);
+
+          a {
+            text-decoration: none;
+            color: var(--color__primary);
+          }
+
+          &:hover {
+            background-color: var(--color__background__primary);
+          }
+        }
       }
     }
 

@@ -6,23 +6,28 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const SideNav = () => {
+  const navigate = useNavigate();
+
+  const onNavigateToHome = () => {
+    navigate("/");
+  };
   return (
     <aside className="sidenav">
-      <div className="sidenav__header">
+      <div className="sidenav__header" onClick={onNavigateToHome}>
         <h3>Admin Panel</h3>
       </div>
       <div className="sidenav__links">
         <div className="sidenav__links__top">
           <ul>
-            <li>
+            {/* <li>
               <NavLink to="/">
                 <FontAwesomeIcon icon={faHouse} style={{ color: "#0b2447" }} />
                 <span>Dashboard</span>
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink to="users">
                 <FontAwesomeIcon

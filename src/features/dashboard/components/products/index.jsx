@@ -21,45 +21,49 @@ const ProductList = ({ products }) => {
   };
 
   return (
-    <div className="userList-grid">
-      <div className="userList-col userList-col-th">id</div>
-      <div className="userList-col userList-col-th">category</div>
-      <div className="userList-col userList-col-th">brand</div>
-      <div className="userList-col userList-col-th">price</div>
-      <div className="userList-col userList-col-th">stock</div>
-      <div className="userList-col userList-col-th userList-col-btns">
-        Actions
-      </div>
+    <div className="userListPage">
+      <h1>All Products</h1>
 
-      {products?.map((product) => (
-        <React.Fragment key={product.id}>
-          <div className="userList-col">{product?.id}</div>
-          <div className="userList-col">{product?.category}</div>
-          <div className="userList-col">{product?.brand}</div>
-          <div className="userList-col">{product?.price}</div>
-          <div className="userList-col">{product?.stock}</div>
-          <div className="userList-col userList-col-btns">
-            <button
-              className="btn"
-              onClick={() => navigate(`/product/edit/${product?.id}`)}
-            >
-              <FontAwesomeIcon icon={faPenToSquare} size="xl" />
-            </button>
-            <button
-              className="btn"
-              onClick={() => deleteProductHandler(product?.id)}
-            >
-              <FontAwesomeIcon
-                className="DeleteIcon"
-                icon={faTrashAlt}
-                cursor="pointer"
-                size="xl"
-              />
-            </button>
-          </div>
-        </React.Fragment>
-      ))}
-      <ToastContainer />
+      <div className="userList-grid">
+        <div className="userList-col userList-col-th">id</div>
+        <div className="userList-col userList-col-th">category</div>
+        <div className="userList-col userList-col-th">brand</div>
+        <div className="userList-col userList-col-th">price</div>
+        <div className="userList-col userList-col-th">stock</div>
+        <div className="userList-col userList-col-th userList-col-btns">
+          Actions
+        </div>
+
+        {products?.map((product) => (
+          <React.Fragment key={product.id}>
+            <div className="userList-col">{product?.id}</div>
+            <div className="userList-col">{product?.category}</div>
+            <div className="userList-col">{product?.brand}</div>
+            <div className="userList-col">{product?.price}</div>
+            <div className="userList-col">{product?.stock}</div>
+            <div className="userList-col userList-col-btns">
+              <button
+                className="btn"
+                onClick={() => navigate(`/product/edit/${product?.id}`)}
+              >
+                <FontAwesomeIcon icon={faPenToSquare} size="xl" />
+              </button>
+              <button
+                className="btn"
+                onClick={() => deleteProductHandler(product?.id)}
+              >
+                <FontAwesomeIcon
+                  className="DeleteIcon"
+                  icon={faTrashAlt}
+                  cursor="pointer"
+                  size="xl"
+                />
+              </button>
+            </div>
+          </React.Fragment>
+        ))}
+        <ToastContainer />
+      </div>
     </div>
   );
 };

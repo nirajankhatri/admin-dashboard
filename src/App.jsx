@@ -51,7 +51,10 @@ function App() {
         <Routes>
           <Route element={<ProtectedRoute user={userInfo} />}>
             <Route path="/" element={<Dashboard />} user={userInfo}>
-              <Route path="/" element={<Charts products={products} />} />
+              <Route
+                path="/"
+                element={<Charts products={products} users={users} />}
+              />
               <Route path="user/edit/:id" element={<UserEditForm />} />
               <Route path="users" element={<UserList users={users} />} />
               <Route path="product/edit/:id" element={<ProductEditForm />} />
