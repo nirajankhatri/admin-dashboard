@@ -5,19 +5,19 @@ const productSlice = createSlice({
   name: "product",
   initialState: {
     loading: false,
-    product: {},
+    product: null,
     error: false,
   },
   reducers: {
     clearProduct: (state, action) => {
-      state.product = {};
+      state.product = null;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProduct.pending, (state) => {
         state.loading = true;
-        state.product = {};
+        state.product = null;
         state.error = false;
       })
       .addCase(fetchProduct.fulfilled, (state, action) => {
@@ -27,7 +27,7 @@ const productSlice = createSlice({
       })
       .addCase(fetchProduct.rejected, (state, action) => {
         state.loading = false;
-        state.product = {};
+        state.product = null;
         state.error = action.payload;
       });
   },

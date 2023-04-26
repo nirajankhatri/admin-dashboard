@@ -5,14 +5,8 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 
-import {
-  fetchProduct,
-  fetchProducts,
-} from "./features/dashboard/components/products/redux/thunks";
-import {
-  fetchUser,
-  fetchUsers,
-} from "./features/dashboard/components/users/redux/thunks";
+import { fetchProducts } from "./features/dashboard/components/products/redux/thunks";
+import { fetchUsers } from "./features/dashboard/components/users/redux/thunks";
 
 import ProtectedRoute from "./HOC/ProtectedRoute";
 import Dashboard from "./features/dashboard";
@@ -25,6 +19,8 @@ import ProductList from "./features/dashboard/components/products";
 import UserEditForm from "./features/dashboard/components/users/components/UserEditForm";
 import ProductEditForm from "./features/dashboard/components/products/components/ProductEditForm";
 import Charts from "./features/dashboard/components/charts";
+import Profile from "./features/dashboard/Profile";
+import ProductDetails from "./features/dashboard/components/products/components/ProductDetails";
 
 function App() {
   let { userInfo } = useSelector((state) => state.login);
@@ -55,8 +51,12 @@ function App() {
                 path="/"
                 element={<Charts products={products} users={users} />}
               />
+              <Route path="user/profile/:id" element={<Profile />} />
               <Route path="user/edit/:id" element={<UserEditForm />} />
               <Route path="users" element={<UserList users={users} />} />
+
+              <Route path="product/details/:id" element={<ProductDetails />} />
+
               <Route path="product/edit/:id" element={<ProductEditForm />} />
               <Route
                 path="products"

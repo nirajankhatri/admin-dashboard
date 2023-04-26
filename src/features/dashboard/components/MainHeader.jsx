@@ -22,12 +22,6 @@ const MainHeader = () => {
         <h3>Dashboard</h3>
       </div>
       <div className="dashboard__main__right">
-        {/* <select>
-          <option>{userInfo?.firstName}</option>
-          <option>View Profile</option>
-        </select> */}
-        {/* <button onClick={onLogoutHandler}>Logout</button> */}
-
         <div
           className="dropDownContainer"
           onClick={() => setShowDropdown((prev) => !prev)}
@@ -46,7 +40,7 @@ const MainHeader = () => {
             style={{ display: showDropdown ? "block" : "none" }}
           >
             <div>
-              <Link>Profile</Link>
+              <Link to={`user/profile/${userInfo?.id}`}>Profile</Link>
             </div>
             <div onClick={onLogoutHandler}>Logout</div>
           </div>

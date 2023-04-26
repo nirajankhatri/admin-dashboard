@@ -1,16 +1,24 @@
-import { faPenToSquare, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import {
+  faEnvelopeOpen,
+  faPenToSquare,
+  faTrashAlt,
+} from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteProduct } from "./redux/productsSlice";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProductFilterForm from "./components/ProductFilterForm";
+import { faDollyBox } from "@fortawesome/free-solid-svg-icons";
 
-const ProductList = ({ products }) => {
+const ProductList = (props) => {
+  const [products, setProducts] = useState(props.products);
+  const [filteredProducts, setFilteredProducts] = useState(props.products);
+
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const deleteProductHandler = (id) => {
@@ -22,6 +30,10 @@ const ProductList = ({ products }) => {
 
   return (
     <div className="userListPage">
+      <ProductFilterForm
+        products={products}
+        setFilteredProducts={setFilteredProducts}
+      />
       <h1>All Products</h1>
 
       <div className="userList-grid">
@@ -34,7 +46,7 @@ const ProductList = ({ products }) => {
           Actions
         </div>
 
-        {products?.map((product) => (
+        {filteredProducts?.map((product) => (
           <React.Fragment key={product.id}>
             <div className="userList-col">{product?.id}</div>
             <div className="userList-col">{product?.category}</div>
@@ -55,6 +67,17 @@ const ProductList = ({ products }) => {
                 <FontAwesomeIcon
                   className="DeleteIcon"
                   icon={faTrashAlt}
+                  cursor="pointer"
+                  size="xl"
+                />
+              </button>
+              <button
+                className="btn"
+                onClick={() => navigate(`/product/details/${product?.id}`)}
+              >
+                <FontAwesomeIcon
+                  className="ProductIcon"
+                  icon={faDollyBox}
                   cursor="pointer"
                   size="xl"
                 />

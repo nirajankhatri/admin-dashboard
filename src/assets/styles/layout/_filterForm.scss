@@ -1,60 +1,64 @@
 .filterForm {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 50%;
-  border: solid 1px gray;
-  padding: 10px;
-  margin: 10px auto;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  // flex-wrap: wrap;
+  // width: 50%;
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  row-gap: 8px;
+  margin-bottom: 1rem;
 
   .form-group {
-    margin-bottom: 1rem;
-  }
-
-  label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-
-  input[type="text"],
-  select
-  {
-    display: block;
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-  }
-
-  .btns {
-    width: 42%;
+    width: fit-content;
     display: flex;
-    justify-content: space-between;
-  }
+    flex-direction: column;
 
-  .btn {
-    display: block;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.25rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    cursor: pointer;
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
 
-    &:hover {
-      filter: saturate(200%);
+    input[type="text"],
+    select {
+      width: 300px;
+      display: block;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      font-size: 1rem;
     }
   }
+  .btns {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 16px;
 
-  .btn-submit {
-    background-color: #007bff;
-    color: #fff;
-  }
+    .btn {
+      display: block;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.25rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      width: 30%;
+      cursor: pointer;
 
-  .btn-reset {
-    background-color: #899097;
-    color: #fff;
+      &:hover {
+        filter: saturate(200%);
+      }
+    }
+    .btn-submit {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .btn-reset {
+      background-color: #899097;
+      color: #fff;
+    }
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function FilterForm({ users, setFilteredUsers }) {
+function UserFilterForm({ users, setFilteredUsers }) {
   const [filter, setFilter] = useState({
     id: "",
     firstName: "",
@@ -120,4 +120,4 @@ function FilterForm({ users, setFilteredUsers }) {
   );
 }
 
-export default FilterForm;
+export default UserFilterForm;

@@ -14,7 +14,7 @@
   .userList-col-btns {
     display: flex;
     align-items: center;
-    gap: 3em;
+    justify-content: space-around;
 
     .btn {
       padding: 4px;

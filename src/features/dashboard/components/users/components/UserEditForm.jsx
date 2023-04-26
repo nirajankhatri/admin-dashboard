@@ -32,7 +32,8 @@ const UserEditForm = () => {
     navigate("/users");
   };
 
-  const onCancelHandler = () => {
+  const onCancelHandler = (e) => {
+    e.preventDefault();
     dispatch(clearUser());
     navigate("/users");
   };

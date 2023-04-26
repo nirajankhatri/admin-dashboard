@@ -1,13 +1,18 @@
-import { faPenToSquare, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import {
+  faPenToSquare,
+  faTrashAlt,
+  faUser,
+} from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteUser } from "./redux/usersSlice";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import FilterForm from "../FilterForm";
+
+import UserFilterForm from "./components/UserFilterForm";
 
 const UserList = (props) => {
   const [users, setUsers] = useState(props.users);
@@ -24,7 +29,7 @@ const UserList = (props) => {
 
   return (
     <div className="userListPage">
-      <FilterForm users={users} setFilteredUsers={setFilteredUsers} />
+      <UserFilterForm users={users} setFilteredUsers={setFilteredUsers} />
       <h1>All Users</h1>
       <div className="userList-grid">
         <div className="userList-col userList-col-th">Id</div>
@@ -57,6 +62,17 @@ const UserList = (props) => {
                 <FontAwesomeIcon
                   className="DeleteIcon"
                   icon={faTrashAlt}
+                  cursor="pointer"
+                  size="xl"
+                />
+              </button>
+              <button
+                className="btn"
+                onClick={() => navigate(`/user/profile/${user?.id}`)}
+              >
+                <FontAwesomeIcon
+                  className="UserIcon"
+                  icon={faUser}
                   cursor="pointer"
                   size="xl"
                 />
