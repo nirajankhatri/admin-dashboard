@@ -54,60 +54,62 @@ const UserEditForm = () => {
     <div className="editUserFormContainer">
       {loading ? null : error ? null : formValues ? (
         <form onSubmit={onSubmitHandler} className="editUserForm">
-          <div>
-            <label>Id</label>
-            <input
-              type="text"
-              name="id"
-              value={formValues.id}
-              onChange={onChangeHandler}
-              disabled
-            />
-          </div>
-          <div>
-            <label>Firstname</label>
-            <input
-              type="text"
-              name="firstName"
-              value={formValues.firstName}
-              onChange={onChangeHandler}
-            />
-          </div>
-          <div>
-            <label>LastName</label>
-            <input
-              type="text"
-              name="lastName"
-              value={formValues.lastName}
-              onChange={onChangeHandler}
-            />
-          </div>
-          <div>
-            <label>Gender</label>
-            <select
-              name="gender"
-              value={formValues.gender}
-              onChange={onChangeHandler}
-            >
-              <option value={formValues.gender}>
-                {formValues.gender.toUpperCase()}
-              </option>
-              <option value={formValues.gender == "male" ? "female" : "male"}>
-                {(formValues.gender == "male"
-                  ? "female"
-                  : "male"
-                ).toUpperCase()}
-              </option>
-            </select>
-          </div>
-          <div>
-            <label>Age</label>
-            <input
-              type="text"
-              name="age"
-              value={formValues.age}
-              onChange={onChangeHandler}
-            />
+          <div className="inputControls">
+            <div className="inputContainer">
+              <label>Id</label>
+              <input
+                type="text"
+                name="id"
+                value={formValues.id}
+                onChange={onChangeHandler}
+                disabled
+              />
+            </div>
+            <div className="inputContainer">
+              <label>Firstname</label>
+              <input
+                type="text"
+                name="firstName"
+                value={formValues.firstName}
+                onChange={onChangeHandler}
+              />
+            </div>
+            <div className="inputContainer">
+              <label>LastName</label>
+              <input
+                type="text"
+                name="lastName"
+                value={formValues.lastName}
+                onChange={onChangeHandler}
+              />
+            </div>
+            <div className="inputContainer">
+              <label>Gender</label>
+              <select
+                name="gender"
+                value={formValues.gender}
+                onChange={onChangeHandler}
+              >
+                <option value={formValues.gender}>
+                  {formValues.gender.toUpperCase()}
+                </option>
+                <option value={formValues.gender == "male" ? "female" : "male"}>
+                  {(formValues.gender == "male"
+                    ? "female"
+                    : "male"
+                  ).toUpperCase()}
+                </option>
+              </select>
+            </div>
+            <div className="inputContainer">
+              <label>Age</label>
+              <input
+                type="text"
+                name="age"
+                value={formValues.age}
+                onChange={onChangeHandler}
+              />
+            </div>
           </div>
           <div className="formBtns">
             <button onClick={onCancelHandler}>Cancel</button>

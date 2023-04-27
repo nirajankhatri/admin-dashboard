@@ -81,7 +81,7 @@ const CategoryStockPieChartContainer = ({ products }) => {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-      <div className="CategoryStockPieChartIndex">
+      <div className="PieChartIndex">
         {result.map((item) => {
           return (
             <div key={item.category}>

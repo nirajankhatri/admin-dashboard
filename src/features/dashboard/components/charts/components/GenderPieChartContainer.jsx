@@ -77,7 +77,7 @@ const GenderPieChartContainer = ({ users }) => {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-      <div className="GenderPieChartIndex">
+      <div className="PieChartIndex">
         {genderCounts.map((gender) => {
           return (
             <div key={gender.gender}>

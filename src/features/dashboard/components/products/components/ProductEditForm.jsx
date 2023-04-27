@@ -53,51 +53,54 @@ const ProductEditForm = () => {
     <div className="editUserFormContainer">
       {loading ? null : error ? null : formValues ? (
         <form onSubmit={onSubmitHandler} className="editUserForm">
-          <div>
-            <label>Title</label>
-            <input
-              type="text"
-              name="title"
-              value={formValues.title}
-              onChange={onChangeHandler}
-            />
+          <div className="inputControls">
+            <div className="inputContainer">
+              <label>Title</label>
+              <input
+                type="text"
+                name="title"
+                value={formValues.title}
+                onChange={onChangeHandler}
+              />
+            </div>
+            <div className="inputContainer">
+              <label>Category</label>
+              <input
+                type="text"
+                name="category"
+                value={formValues.category}
+                onChange={onChangeHandler}
+              />
+            </div>
+            <div className="inputContainer">
+              <label>Brand</label>
+              <input
+                type="text"
+                name="brand"
+                value={formValues.brand}
+                onChange={onChangeHandler}
+              />
+            </div>
+            <div className="inputContainer">
+              <label>Price</label>
+              <input
+                type="text"
+                name="price"
+                value={formValues.price}
+                onChange={onChangeHandler}
+              />
+            </div>
+            <div className="inputContainer">
+              <label>Stock</label>
+              <input
+                type="text"
+                name="stock"
+                value={formValues.stock}
+                onChange={onChangeHandler}
+              />
+            </div>
           </div>
-          <div>
-            <label>Category</label>
-            <input
-              type="text"
-              name="category"
-              value={formValues.category}
-              onChange={onChangeHandler}
-            />
-          </div>
-          <div>
-            <label>Brand</label>
-            <input
-              type="text"
-              name="brand"
-              value={formValues.brand}
-              onChange={onChangeHandler}
-            />
-          </div>
-          <div>
-            <label>Price</label>
-            <input
-              type="text"
-              name="price"
-              value={formValues.price}
-              onChange={onChangeHandler}
-            />
-          </div>
-          <div>
-            <label>Stock</label>
-            <input
-              type="text"
-              name="stock"
-              value={formValues.stock}
-              onChange={onChangeHandler}
-            />
-          </div>
+
           <div className="formBtns">
             <button onClick={onCancelHandler}>Cancel</button>
             <button onClick={onSubmitHandler}>Save</button>
