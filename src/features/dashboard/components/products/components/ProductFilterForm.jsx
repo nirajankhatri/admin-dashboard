@@ -39,7 +39,7 @@ function ProductFilterForm({ products, setFilteredProducts }) {
   function handleSubmit(event) {
     event.preventDefault();
     const filteredProducts = filterProducts();
-    console.log(filteredProducts);
+    console.log(filteredProducts.length);
     setFilteredProducts(filteredProducts);
   }
 

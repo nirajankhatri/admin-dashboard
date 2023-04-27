@@ -1,11 +1,7 @@
-import {
-  faEnvelopeOpen,
-  faPenToSquare,
-  faTrashAlt,
-} from "@fortawesome/free-regular-svg-icons";
+import { faPenToSquare, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteProduct } from "./redux/productsSlice";
 
@@ -13,10 +9,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductFilterForm from "./components/ProductFilterForm";
 import { faDollyBox } from "@fortawesome/free-solid-svg-icons";
+import SectionHeader from "../../../../components/SectionHeader";
 
-const ProductList = (props) => {
-  const [products, setProducts] = useState(props.products);
-  const [filteredProducts, setFilteredProducts] = useState(props.products);
+const ProductList = () => {
+  const { products } = useSelector((state) => state.products);
+  const [filteredProducts, setFilteredProducts] = useState(products);
+
+  // console.log(props.products.length);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,13 +27,17 @@ const ProductList = (props) => {
     }
   };
 
+  useEffect(() => {
+    setFilteredProducts(products);
+  }, [products]);
+
   return (
     <div className="userListPage">
       <ProductFilterForm
         products={products}
         setFilteredProducts={setFilteredProducts}
       />
-      <h1>All Products</h1>
+      <SectionHeader headerTitle="All Products" />
 
       <div className="userList-grid">
         <div className="userList-col userList-col-th">id</div>
@@ -58,7 +61,7 @@ const ProductList = (props) => {
                 className="btn"
                 onClick={() => navigate(`/product/edit/${product?.id}`)}
               >
-                <FontAwesomeIcon icon={faPenToSquare} size="xl" />
+                <FontAwesomeIcon icon={faPenToSquare} />
               </button>
               <button
                 className="btn"
@@ -68,7 +71,6 @@ const ProductList = (props) => {
                   className="DeleteIcon"
                   icon={faTrashAlt}
                   cursor="pointer"
-                  size="xl"
                 />
               </button>
               <button
@@ -79,7 +81,6 @@ const ProductList = (props) => {
                   className="ProductIcon"
                   icon={faDollyBox}
                   cursor="pointer"
-                  size="xl"
                 />
               </button>
             </div>

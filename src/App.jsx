@@ -19,14 +19,13 @@ import ProductList from "./features/dashboard/components/products";
 import UserEditForm from "./features/dashboard/components/users/components/UserEditForm";
 import ProductEditForm from "./features/dashboard/components/products/components/ProductEditForm";
 import Charts from "./features/dashboard/components/charts";
-import Profile from "./features/dashboard/Profile";
+import Profile from "./features/dashboard/components/users/components/Profile";
 import ProductDetails from "./features/dashboard/components/products/components/ProductDetails";
 
 function App() {
   let { userInfo } = useSelector((state) => state.login);
 
   const { users } = useSelector((state) => state.users);
-  const { products } = useSelector((state) => state.products);
 
   const dispatch = useDispatch();
 
@@ -49,18 +48,18 @@ function App() {
             <Route path="/" element={<Dashboard />} user={userInfo}>
               <Route
                 path="/"
-                element={<Charts products={products} users={users} />}
+                element={<Charts />}
               />
               <Route path="user/profile/:id" element={<Profile />} />
               <Route path="user/edit/:id" element={<UserEditForm />} />
-              <Route path="users" element={<UserList users={users} />} />
+              <Route path="users" element={<UserList />} />
 
               <Route path="product/details/:id" element={<ProductDetails />} />
 
               <Route path="product/edit/:id" element={<ProductEditForm />} />
               <Route
                 path="products"
-                element={<ProductList products={products} />}
+                element={<ProductList />}
               />
               <Route path="reports" element={<Reports />} />
             </Route>

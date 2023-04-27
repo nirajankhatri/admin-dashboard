@@ -1,44 +1,37 @@
-.backBtn {
-  text-decoration: none;
-  color: var(--color__primary);
-  padding: 8px;
-  text-decoration: underline;
-}
-
 .user {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
 
   .user-image {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
-    margin-top: 30px;
+    // border-radius: 50%;
+    margin-top: 20px;
   }
 
   .user-name {
     font-size: 24px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .user-title {
     font-size: 18px;
-    margin-top: 10px;
+    // margin-top: 10px;
     margin-bottom: 30px;
     color: rgb(95, 94, 94);
+    font-weight: 400;
   }
 
   .user-details {
-    background-color: aliceblue;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
     width: 100%;
 
     .user-section {
       margin: 0 10px;
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
 
       .user-section-title {
         font-size: 18px;
@@ -50,10 +43,9 @@
         margin: 0;
       }
 
-      .user-company-name {
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 5px;
+      span {
+        margin-right: 8px;
+        color: var(--color__primary);
       }
     }
   }

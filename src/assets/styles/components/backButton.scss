@@ -1,0 +1,10 @@
+.backBtn {
+  text-decoration: none;
+  color: var(--color__primary);
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    padding-left: 0px;
+  }
+}

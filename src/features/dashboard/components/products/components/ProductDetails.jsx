@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import BackButton from "../../../../../components/BackButton";
 import Spinner from "../../../../../components/Spinner";
 import { fetchProduct } from "../redux/thunks";
 
@@ -21,9 +22,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      <Link to="/products" className="backBtn">
-        Go Back
-      </Link>
+      <BackButton redirectTo="/products" />
       {loading ? (
         <Spinner />
       ) : product ? (
@@ -53,17 +52,13 @@ const ProductDetails = () => {
             <div className="product-rating">
               <span className="product-rating-stars">
                 {[...Array(Math.round(product.rating))].map((_, i) => (
-                  <FontAwesomeIcon icon={faStar} />
+                  <FontAwesomeIcon key={i} icon={faStar} />
                 ))}
               </span>
               <span className="product-rating-score">{product.rating}</span>
             </div>
             <div className="product-stock">
-              {product.stock > 0 ? (
-                <span className="product-in-stock">In stock</span>
-              ) : (
-                <span className="product-out-of-stock">Out of stock</span>
-              )}
+              <span className="product-in-stock">Stock: {product.stock}</span>
             </div>
           </div>
         </div>

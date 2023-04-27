@@ -4,8 +4,8 @@ import {
   faUser,
 } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteUser } from "./redux/usersSlice";
 
@@ -13,10 +13,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import UserFilterForm from "./components/UserFilterForm";
+import SectionHeader from "../../../../components/SectionHeader";
 
 const UserList = (props) => {
-  const [users, setUsers] = useState(props.users);
-  const [filteredUsers, setFilteredUsers] = useState(props.users);
+  const { users } = useSelector((state) => state.users);
+
+  // const [users, setUsers] = useState(props.users);
+  const [filteredUsers, setFilteredUsers] = useState(users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -27,10 +30,14 @@ const UserList = (props) => {
     }
   };
 
+  useEffect(() => {
+    setFilteredUsers(users);
+  }, [users]);
+
   return (
     <div className="userListPage">
       <UserFilterForm users={users} setFilteredUsers={setFilteredUsers} />
-      <h1>All Users</h1>
+      <SectionHeader headerTitle="All Users" />
       <div className="userList-grid">
         <div className="userList-col userList-col-th">Id</div>
         <div className="userList-col userList-col-th">firstName</div>
