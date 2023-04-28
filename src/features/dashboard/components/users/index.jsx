@@ -18,7 +18,6 @@ import SectionHeader from "../../../../components/SectionHeader";
 const UserList = (props) => {
   const { users } = useSelector((state) => state.users);
 
-  // const [users, setUsers] = useState(props.users);
   const [filteredUsers, setFilteredUsers] = useState(users);
   const dispatch = useDispatch();
   const navigate = useNavigate();

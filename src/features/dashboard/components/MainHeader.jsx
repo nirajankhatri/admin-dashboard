@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userContext } from "../../../context/userContext";
 import { logout } from "../../login/redux/thunk";
 
 const MainHeader = () => {
   const userInfo = useContext(userContext);
-  console.log(userInfo);
+
+  const navigate = useNavigate();
 
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -39,9 +40,7 @@ const MainHeader = () => {
             className="dropDownList"
             style={{ display: showDropdown ? "block" : "none" }}
           >
-            <div>
-              <Link to={`user/profile/${userInfo?.id}`}>Profile</Link>
-            </div>
+            <div onClick={() => navigate(`user/profile/${userInfo?.id}`)}>Profile</div>
             <div onClick={onLogoutHandler}>Logout</div>
           </div>
         </div>
