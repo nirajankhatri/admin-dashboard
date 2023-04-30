@@ -1,8 +1,8 @@
 import {
   faBoxesStacked,
   faFileAlt,
-  faHouse,
   faUserAlt,
+  faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -15,12 +15,15 @@ const SideNav = () => {
     navigate("/");
   };
   return (
-    <aside className="sidenav">
-      <div className="sidenav__header" onClick={onNavigateToHome}>
+    <aside className="sidenav hide">
+      <div className="sidenav-header" onClick={onNavigateToHome}>
+        <span>
+          <FontAwesomeIcon icon={faHouse} style={{ color: "#0b2447" }} />
+        </span>
         <h3>Admin Panel</h3>
       </div>
-      <div className="sidenav__links">
-        <div className="sidenav__links__top">
+      <div className="sidenav-links">
+        <div className="sidenav-links-top">
           <ul>
             {/* <li>
               <NavLink to="/">
@@ -46,7 +49,7 @@ const SideNav = () => {
                 <span>Products</span>
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="reports">
                 <FontAwesomeIcon
                   icon={faFileAlt}
@@ -54,10 +57,10 @@ const SideNav = () => {
                 />
                 <span>Reports</span>
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
-        <div className="sidenav__links__bottom">
+        <div className="sidenav-links-bottom">
           {/* <h4>@ nirajan.dev.io </h4> */}
         </div>
       </div>

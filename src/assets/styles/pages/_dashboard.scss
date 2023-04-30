@@ -4,14 +4,14 @@
   height: 100%;
 
   main {
-    width: 80%;
+    width: 85%;
     @media (max-width: 768px) {
       width: calc(100vw - 48px);
     }
   }
 
   section {
-    padding-block: 16px 0px;
+    padding-block: 16px 4px;
     padding-inline: 32px;
     height: 88%;
     overflow: scroll;

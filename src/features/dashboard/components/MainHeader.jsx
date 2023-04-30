@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import NavToggle from "../../../components/NavToggle";
 import { userContext } from "../../../context/userContext";
 import { logout } from "../../login/redux/thunk";
 
@@ -19,10 +20,12 @@ const MainHeader = () => {
 
   return (
     <header className="mainHeader">
-      <div className="dashboard__main__left">
+      <div className="dashboard-main-left">
+        {/* <NavToggle /> */}
+
         <h3>Dashboard</h3>
       </div>
-      <div className="dashboard__main__right">
+      <div className="dashboard-main-right">
         <div
           className="dropDownContainer"
           onClick={() => setShowDropdown((prev) => !prev)}
@@ -40,7 +43,9 @@ const MainHeader = () => {
             className="dropDownList"
             style={{ display: showDropdown ? "block" : "none" }}
           >
-            <div onClick={() => navigate(`user/profile/${userInfo?.id}`)}>Profile</div>
+            <div onClick={() => navigate(`user/profile/${userInfo?.id}`)}>
+              Profile
+            </div>
             <div onClick={onLogoutHandler}>Logout</div>
           </div>
         </div>

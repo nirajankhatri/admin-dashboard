@@ -1,4 +1,12 @@
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import {
+  faArrowLeft,
+  faLocation,
+  faLocationArrow,
+  faMailForward,
+  faPhone,
+  faPhoneAlt,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,31 +37,39 @@ const Profile = () => {
         <Spinner />
       ) : user ? (
         <div className="user">
-          <img className="user-image" src={user?.image} alt="User" />
+          <div className="user-left">
+            <img className="user-image" src={user?.image} alt="User" />
 
-          <div>
-            <div className="user-details">
-              <div className="user-section">
-                <div className="user-section-bio">
-                  <h1 className="user-name">{`${user?.firstName} ${user?.lastName}`}</h1>
-                  <h2 className="user-title">{user?.company?.title}</h2>
-                </div>
-                <h3 className="user-section-title">Contact Information</h3>
-                <p className="user-email">
-                  <span>Email:</span>
-                  {user?.email}
-                </p>
-                <p className="user-phone">
-                  <span>Phone:</span>
-                  {user?.phone}
-                </p>
-                <p className="user-address">
-                  <span>Address:</span>
-                  {`${user?.address?.address}, ${user?.address?.city}, ${user?.address?.state} ${user?.address?.postalCode}`}
-                </p>
+            <div className="user-section">
+              <div className="user-section-bio">
+                <h1 className="user-name">{`${user?.firstName} ${user?.lastName}`}</h1>
+                <h2 className="user-title">{user?.company?.title}</h2>
               </div>
-              <div className="user-section">
-                <h3 className="user-section-title">Personal Information</h3>
+              {/* <h3 className="user-section-title">Contact Information</h3> */}
+              <p className="user-email">
+                <span>
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </span>
+                {user?.email}
+              </p>
+              <p className="user-phone">
+                <span>
+                  <FontAwesomeIcon icon={faPhoneAlt} />
+                </span>
+                {user?.phone}
+              </p>
+              <p className="user-address">
+                <span>
+                  <FontAwesomeIcon icon={faLocationArrow} />
+                </span>
+                {`${user?.address?.address}, ${user?.address?.city}, ${user?.address?.state} ${user?.address?.postalCode}`}
+              </p>
+            </div>
+          </div>
+          <div className="user-right">
+            <div className="user-section">
+              <h3 className="user-section-title">Personal Information</h3>
+              <div className="user-section-details">
                 <p className="user-age">
                   <span>Age:</span>
                   {`${user?.age}`}
@@ -79,8 +95,10 @@ const Profile = () => {
                   {`${user?.bloodGroup}`}
                 </p>
               </div>
-              <div className="user-section">
-                <h3 className="user-section-title">Work Information</h3>
+            </div>
+            <div className="user-section">
+              <h3 className="user-section-title">Work Information</h3>
+              <div className="user-section-details">
                 <p className="user-company-name">
                   <span>Company:</span>
                   {user?.company?.name}

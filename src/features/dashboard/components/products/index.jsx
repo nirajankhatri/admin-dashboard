@@ -10,10 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 import ProductFilterForm from "./components/ProductFilterForm";
 import { faDollyBox } from "@fortawesome/free-solid-svg-icons";
 import SectionHeader from "../../../../components/SectionHeader";
+import Pagination from "../../../../components/Pagination";
 
 const ProductList = () => {
   const { products } = useSelector((state) => state.products);
   const [filteredProducts, setFilteredProducts] = useState(products);
+  const [displayedProducts, setDisplayedProducts] = useState([]);
 
   // console.log(props.products.length);
 
@@ -49,7 +51,7 @@ const ProductList = () => {
           Actions
         </div>
 
-        {filteredProducts?.map((product) => (
+        {displayedProducts?.map((product) => (
           <React.Fragment key={product.id}>
             <div className="userList-col">{product?.id}</div>
             <div className="userList-col">{product?.category}</div>
@@ -86,8 +88,12 @@ const ProductList = () => {
             </div>
           </React.Fragment>
         ))}
-        <ToastContainer />
       </div>
+      <Pagination
+        filteredData={filteredProducts}
+        setDisplayedData={setDisplayedProducts}
+      />
+      <ToastContainer />
     </div>
   );
 };

@@ -14,11 +14,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 import UserFilterForm from "./components/UserFilterForm";
 import SectionHeader from "../../../../components/SectionHeader";
+import Pagination from "../../../../components/Pagination";
 
 const UserList = (props) => {
   const { users } = useSelector((state) => state.users);
-
   const [filteredUsers, setFilteredUsers] = useState(users);
+  const [displayedUsers, setDisplayedUsers] = useState([]);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -47,7 +49,7 @@ const UserList = (props) => {
           Actions
         </div>
 
-        {filteredUsers?.map((user) => (
+        {displayedUsers?.map((user) => (
           <React.Fragment key={user.id}>
             <div className="userList-col">{user?.id}</div>
             <div className="userList-col">{user?.firstName}</div>
@@ -86,8 +88,13 @@ const UserList = (props) => {
             </div>
           </React.Fragment>
         ))}
-        <ToastContainer />
       </div>
+      <Pagination
+        filteredData={filteredUsers}
+        setDisplayedData={setDisplayedUsers}
+      />
+
+      <ToastContainer />
     </div>
   );
 };

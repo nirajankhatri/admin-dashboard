@@ -1,0 +1,53 @@
+.menu__btn {
+  display: flex;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+
+  span {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition: 0.3s;
+  }
+  span::before {
+    @extend span;
+    content: "";
+    top: -8px;
+  }
+  span::after {
+    @extend span;
+    content: "";
+    top: 8px;
+  }
+}
+
+#menu__toggle {
+  display: none;
+
+  &:checked {
+    & ~ .menu__btn {
+      span {
+        transform: rotate(45deg);
+
+        &::before {
+          top: 0;
+          transform: rotate(0);
+        }
+
+        &::after {
+          top: -1px;
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    & ~ .sidenav-header {
+      display: flex;
+    }
+  }
+}

@@ -1,7 +1,9 @@
 .userList-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  // color: var(--color__primary);
+  height: 256px;
+  overflow: scroll;
+  align-content: start;
 
   .userList-col {
     border: 1px solid #ccc;
@@ -37,7 +39,7 @@
     }
   }
   .userList-col.userList-col-th {
-    background-color: var(--color__brand);
+    background-color: var(--color-brand);
     border: none;
     font-weight: 500;
     text-transform: uppercase;
