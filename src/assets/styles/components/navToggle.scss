@@ -1,10 +1,15 @@
 .menu__btn {
-  display: flex;
+  display: none;
+  // display: flex;
   align-items: center;
   width: 26px;
   height: 26px;
   cursor: pointer;
   z-index: 1;
+
+  @media (max-width: 576px) {
+    display: flex;
+  }
 
   span {
     display: block;
@@ -40,7 +45,7 @@
         }
 
         &::after {
-          top: -1px;
+          top: -2px;
           transform: rotate(90deg);
         }
       }

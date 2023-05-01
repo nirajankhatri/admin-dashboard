@@ -21,7 +21,7 @@ const MainHeader = () => {
   return (
     <header className="mainHeader">
       <div className="dashboard-main-left">
-        {/* <NavToggle /> */}
+        <NavToggle />
 
         <h3>Dashboard</h3>
       </div>

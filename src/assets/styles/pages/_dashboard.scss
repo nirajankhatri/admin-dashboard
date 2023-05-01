@@ -21,4 +21,13 @@
       padding-inline: 8px;
     }
   }
+
+  @media (max-width: 576px) {
+    main {
+      width: 100vw;
+    }
+    main.fitAvailable {
+      width: calc(100vw - 48px);
+    }
+  }
 }

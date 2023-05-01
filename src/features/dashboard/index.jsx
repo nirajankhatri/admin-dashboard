@@ -14,7 +14,7 @@ const Dashboard = ({ user }) => {
   return (
     <div className="dashboard">
       <SideNav />
-      <main>
+      <main className="dashboard__main">
         <MainHeader />
         <section>
           <Outlet />

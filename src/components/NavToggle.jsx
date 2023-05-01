@@ -4,7 +4,19 @@ const NavToggle = () => {
   const onToggleHandle = (e) => {
     const checked = e.target.checked;
     if (checked) {
-
+      document
+        .getElementsByClassName("sidenav")[0]
+        .classList.replace("hide", "show");
+      document
+        .getElementsByClassName("dashboard__main")[0]
+        .classList.add("fitAvailable");
+    } else {
+      document
+        .getElementsByClassName("sidenav")[0]
+        .classList.replace("show", "hide");
+      document
+        .getElementsByClassName("dashboard__main")[0]
+        .classList.remove("fitAvailable");
     }
   };
   return (
